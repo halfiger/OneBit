@@ -1,6 +1,7 @@
 # IntelliJ IDEA
 .idea/
 .idea/OneBit.iml
+.idea/.gitignore
 *.iml
 *.xml
 

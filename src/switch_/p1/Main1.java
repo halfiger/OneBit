@@ -16,6 +16,14 @@ public class Main1 {
         main.task2('D');
 
         System.out.println("= = = = = = = = = = = =");
+
+        main.task3("USER");
+        main.task3("ADMIN");
+        main.task3("NEW");
+
+        System.out.println("= = = = = = = = = = = =");
+
+
     }
 
     public void task1 (int i) {
@@ -49,12 +57,20 @@ public class Main1 {
             default :
                 System.out.println("Fail");
         }
-
-
-
-
     }
 
+    public void task3 (String s) {
+        switch (s) {
+            case "ADMIN" :
+                System.out.println("ADMINISTRATOR");
+                break;
+            case "USER" :
+                System.out.println("USER");
+                break;
+            default :
+                System.out.println("GUEST");
+        }
+    }
 
 
 
