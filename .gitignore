@@ -1,0 +1,9 @@
+# IntelliJ IDEA
+.idea/
+.idea/OneBit.iml
+*.iml
+*.xml
+
+# compiled files (якщо є)
+out/
+build/

@@ -8,7 +8,14 @@ public class Main1 {
         main.task1(3);
         main.task1(4);
 
+        System.out.println("= = = = = = = = = = = =");
 
+        main.task2('A');
+        main.task2('B');
+        main.task2('C');
+        main.task2('D');
+
+        System.out.println("= = = = = = = = = = = =");
     }
 
     public void task1 (int i) {
@@ -27,4 +34,28 @@ public class Main1 {
                 break;
         }
     }
+
+    public void task2 (char c) {
+        switch (c) {
+            case 'A' :
+                System.out.println("Excelent");
+                break;
+            case 'B' :
+                System.out.println("Good");
+                break;
+            case 'C' :
+                System.out.println("Average");
+                break;
+            default :
+                System.out.println("Fail");
+        }
+
+
+
+
+    }
+
+
+
+
 }
