@@ -23,55 +23,92 @@ public class Main1 {
 
         System.out.println("= = = = = = = = = = = =");
 
+        main.task4(1);
+        main.task4(2);
+        main.task4(3);
+        main.task4(4);
+        main.task4(5);
+        main.task4(6);
+        main.task4(7);
+        main.task4(8);
 
+        System.out.println("= = = = = = = = = = = =");
+
+        System.out.println("= = = = = = = = = = = =");
     }
 
-    public void task1 (int i) {
+    public void task1(int i) {
         switch (i) {
-            case 1 :
+            case 1:
                 System.out.println("Monday");
                 break;
-            case 2 :
+            case 2:
                 System.out.println("Tuesday");
                 break;
-            case 3 :
+            case 3:
                 System.out.println("Wednesday");
                 break;
-            default :
+            default:
                 System.out.println("other");
                 break;
         }
     }
 
-    public void task2 (char c) {
+    public void task2(char c) {
         switch (c) {
-            case 'A' :
+            case 'A':
                 System.out.println("Excelent");
                 break;
-            case 'B' :
+            case 'B':
                 System.out.println("Good");
                 break;
-            case 'C' :
+            case 'C':
                 System.out.println("Average");
                 break;
-            default :
+            default:
                 System.out.println("Fail");
         }
     }
 
-    public void task3 (String s) {
+    public void task3(String s) {
         switch (s) {
-            case "ADMIN" :
+            case "ADMIN":
                 System.out.println("ADMINISTRATOR");
                 break;
-            case "USER" :
+            case "USER":
                 System.out.println("USER");
                 break;
-            default :
+            default:
                 System.out.println("GUEST");
         }
     }
 
-
+    public void task4(int i) {
+        switch (i) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thursday");
+                break;
+            case 5:
+                System.out.println("Friday");
+                break;
+            case 6:
+                System.out.println("Saturday");
+                break;
+            case 7:
+                System.out.println("Sunday");
+                break;
+            default:
+                System.out.println("other");
+        }
+    }
 
 }
