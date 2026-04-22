@@ -210,6 +210,23 @@ public class Main1 {
         }
     }
 
+    public String task11 (int day) {
+        return switch (day) {
+            case 1 -> "Monday";
+            case 2 -> "Tuesday";
+            case 3 -> "Wednesday";
+            default -> "Unknown";
+        };
+    }
+
+    public String task12 (int number) {
+        return switch (number) {
+            case 1,2,3 -> "Low";
+            case 4,5 -> "Medium";
+            default -> "High";
+        };
+    }
+
 
 
 }
