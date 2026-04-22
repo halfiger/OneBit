@@ -146,8 +146,21 @@ public class Main1 {
             case 3:
                 System.out.println("Winter");
                 break;
-            default :
+            default:
                 System.out.println("Not winter");
+        }
+    }
+
+    public void task7(int number) {
+        switch (number % 2) {
+            case 0:
+                System.out.println("odd");
+                break;
+            case 1:
+                System.out.println("even");
+                break;
+            default:
+                System.out.println("fault");
         }
     }
 
