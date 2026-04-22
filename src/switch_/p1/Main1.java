@@ -34,13 +34,13 @@ public class Main1 {
 
         System.out.println("= = = = = = = = = = = =");
 
-        main.task5(1 );
-        main.task5(2 );
-        main.task5(3 );
-        main.task5(4 );
-        main.task5(5 );
-        main.task5(6 );
-        main.task5(7 );
+        main.task5(1);
+        main.task5(2);
+        main.task5(3);
+        main.task5(4);
+        main.task5(5);
+        main.task5(6);
+        main.task5(7);
 
         System.out.println("= = = = = = = = = = = =");
     }
@@ -118,23 +118,38 @@ public class Main1 {
                 System.out.println("other");
         }
     }
-    public void task5 (int i) {
+
+    public void task5(int i) {
         switch (i) {
-            case 1 :
-            case 2 :
-            case 3 :
+            case 1:
+            case 2:
+            case 3:
                 System.out.println("low");
                 break;
-            case 4 :
-            case 5 :
+            case 4:
+            case 5:
                 System.out.println("Medium");
                 break;
-            case 6 :
+            case 6:
                 System.out.println("High");
                 break;
-            default :
+            default:
                 System.out.println("other");
         }
     }
+
+    public void task6() {
+        int month = 0;
+        switch (month) {
+            case 1:
+            case 2:
+            case 3:
+                System.out.println("Winter");
+                break;
+            default :
+                System.out.println("Not winter");
+        }
+    }
+
 
 }
