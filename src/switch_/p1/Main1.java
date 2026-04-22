@@ -164,45 +164,46 @@ public class Main1 {
         }
     }
 
-    public void task8 (String sentense) {
+    public void task8(String sentense) {
         switch (sentense) {
-            case "USD" :
+            case "USD":
                 System.out.println("dolyar");
                 break;
-            case "EUR" :
+            case "EUR":
                 System.out.println("euro");
                 break;
-            case "UAH" :
+            case "UAH":
                 System.out.println("grivna");
                 break;
-            default :
+            default:
                 System.out.println("other");
         }
     }
 
-    public void task9 (char c) {
+    public void task9(char c) {
         int a = 3;
         int b = 5;
 
         switch (c) {
-            case '+' :
-                System.out.println(a+b);
+            case '+':
+                System.out.println(a + b);
                 break;
-            case '-' :
-                System.out.println(a-b);
+            case '-':
+                System.out.println(a - b);
                 break;
-            case '*' :
-                System.out.println(a*b);
+            case '*':
+                System.out.println(a * b);
                 break;
         }
     }
-    public void task10 (char c) {
+
+    public void task10(char c) {
         switch (c) {
-            case 'a' :
-            case 'e' :
-            case 'i' :
-            case 'o' :
-            case 'u' :
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
                 System.out.println("Vowel");
                 break;
             default:
@@ -210,7 +211,7 @@ public class Main1 {
         }
     }
 
-    public String task11 (int day) {
+    public String task11(int day) {
         return switch (day) {
             case 1 -> "Monday";
             case 2 -> "Tuesday";
@@ -219,13 +220,22 @@ public class Main1 {
         };
     }
 
-    public String task12 (int number) {
+    public String task12(int number) {
         return switch (number) {
-            case 1,2,3 -> "Low";
-            case 4,5 -> "Medium";
+            case 1, 2, 3 -> "Low";
+            case 4, 5 -> "Medium";
             default -> "High";
         };
     }
+
+    public String task13(String role) {
+        return switch (role) {
+            case "ADMIN" -> "Full";
+            case "USER" -> "Limited";
+            default -> "GUEST";
+        };
+    }
+
 
 
 
