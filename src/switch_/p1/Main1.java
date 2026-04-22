@@ -277,5 +277,16 @@ public class Main1 {
         };
     }
 
+    public String getOperator (char c) {
+        return switch (c) {
+            case '+', '-', '*', '/' -> "Operator";
+            default -> "Other";
+        };
+
+
+
+
+    }
+
 
 }
