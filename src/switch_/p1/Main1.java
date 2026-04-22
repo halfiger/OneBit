@@ -196,6 +196,19 @@ public class Main1 {
                 break;
         }
     }
+    public void task10 (char c) {
+        switch (c) {
+            case 'a' :
+            case 'e' :
+            case 'i' :
+            case 'o' :
+            case 'u' :
+                System.out.println("Vowel");
+                break;
+            default:
+                System.out.println("Consosnant");
+        }
+    }
 
 
 
