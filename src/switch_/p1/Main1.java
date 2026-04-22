@@ -282,11 +282,21 @@ public class Main1 {
             case '+', '-', '*', '/' -> "Operator";
             default -> "Other";
         };
-
-
-
-
     }
 
+    public String getLength (String sentence) {
+        return switch (sentence.length()) {
+            case 1,2,3 -> "Short";
+            case 4,5,6 -> "Medium";
+            default -> "Long";
+        };
+    }
+
+    public String getNull (String s) {
+        return (s == null) ? "Null" : switch(s) {
+            case "A" -> "Letter A";
+            default -> "Other";
+        };
+    }
 
 }
