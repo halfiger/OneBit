@@ -245,8 +245,8 @@ public class Main1 {
         };
     }
 
-    public void task15 (int x) {
-        String result = switch(x) {
+    public void task15(int x) {
+        String result = switch (x) {
             case 10 -> {
                 System.out.println("Debug");
                 yield "Ten";
@@ -256,6 +256,14 @@ public class Main1 {
                 yield "Five";
             }
             default -> "Other";
+        };
+    }
+
+    public String evenOdd(int a) {
+        return switch (a % 2) {
+            case 1 -> "Even";
+            case 2 -> "Odd";
+            default -> "Fault";
         };
     }
 }
