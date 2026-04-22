@@ -245,5 +245,17 @@ public class Main1 {
         };
     }
 
-
+    public void task15 (int x) {
+        String result = switch(x) {
+            case 10 -> {
+                System.out.println("Debug");
+                yield "Ten";
+            }
+            case 5 -> {
+                System.out.println("Test");
+                yield "Five";
+            }
+            default -> "Other";
+        };
+    }
 }
