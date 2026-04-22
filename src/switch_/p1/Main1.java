@@ -236,7 +236,14 @@ public class Main1 {
         };
     }
 
+    public int task14(char c, int a, int b) {
 
+        return switch (c) {
+            case '+' -> a + b;
+            case '-' -> a - b;
+            default -> '0';
+        };
+    }
 
 
 }
