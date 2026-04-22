@@ -164,5 +164,39 @@ public class Main1 {
         }
     }
 
+    public void task8 (String sentense) {
+        switch (sentense) {
+            case "USD" :
+                System.out.println("dolyar");
+                break;
+            case "EUR" :
+                System.out.println("euro");
+                break;
+            case "UAH" :
+                System.out.println("grivna");
+                break;
+            default :
+                System.out.println("other");
+        }
+    }
+
+    public void task9 (char c) {
+        int a = 3;
+        int b = 5;
+
+        switch (c) {
+            case '+' :
+                System.out.println(a+b);
+                break;
+            case '-' :
+                System.out.println(a-b);
+                break;
+            case '*' :
+                System.out.println(a*b);
+                break;
+        }
+    }
+
+
 
 }
