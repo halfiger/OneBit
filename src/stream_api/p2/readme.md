@@ -62,19 +62,14 @@
 згрупувати за довжиною логіна.
 Рішення:
 
-    public Map<Integer, List<String>> practice4 (List <String> emails) {
+    public List <String> task4 (List<String> emails) {
         return emails.stream()
-                .collect(Collectors.groupingBy(
-                        e -> e.substring(0, e.indexOf('@')).length(),
-                        Collectors.mapping(e -> e
-                                        .substring(e.indexOf('@')+1),
-                                Collectors.toList())
-                ));
+                .map(str -> str.substring(0, str.indexOf('@')))
+                .sorted(Comparator.comparing(String::length))
+                .toList();
+    }
     }
 
-
-Коментар: mapping усередині groupingBy
-— потужне поєднання.
 
 2.5 — Унікальні символи як String (distinct)
 
@@ -89,8 +84,7 @@
     }
 
 
-Коментар: chars → int коди; mapToObj
-для об’єктів.
+Коментар: chars → int коди; mapToObj для об’єктів.
 
 2.6 — Витягнути лише великі літери
 
