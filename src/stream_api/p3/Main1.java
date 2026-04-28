@@ -55,4 +55,19 @@ public class Main1 {
                 .max(Comparator.comparingInt(String::length))
                 .orElse("");
     }
+
+    public Map <Long, Double> task10 () {
+        return Arrays.stream(words)
+                .collect(Collectors.collectingAndThen(
+                        Collectors.groupingBy(
+                                w -> (long) w.length(),
+                                Collectors.averagingInt(w ->
+                                        (int) w.chars()
+                                                .filter(c -> "aeiou".indexOf(c) >= 0)
+                                                .count()
+                                )
+                        ),
+                        Collections::unmodifiableMap
+                ));
+    }
 }

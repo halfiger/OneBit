@@ -144,12 +144,19 @@ summaryStatistics по довжинах.
 Умова: зробити результат незмінним Map <Long, Double>
 Рішення:
 
-return Stream.of(words).collect(Collectors.collectingAndThen(
-Collectors.groupingBy(String::length, Collectors.averagingInt(
-w -> (int) w.chars().filter(c -> "aeiou".indexOf(c) >= 0).count()
-)),
-Collections::unmodifiableMap
-));
+
+        return Arrays.stream(words)
+    .collect(Collectors.collectingAndThen(
+        Collectors.groupingBy(
+            w -> (long) w.length(),
+            Collectors.averagingInt(w -> 
+                (int) w.chars()
+                    .filter(c -> "aeiou".indexOf(c) >= 0)
+                    .count()
+            )
+        ),
+        Collections::unmodifiableMap
+    ));
 
 
 Теорія: collectingAndThen дозволяє обгорнути результат у read-only.
