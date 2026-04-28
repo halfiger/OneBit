@@ -27,7 +27,7 @@
 
 Теорія: partitioningBy швидкий для true/false.
 
-## 3.3 — Порахувати кількість слів за довжиною (ті, що містять голосну)
+## 3.3 — Порахувати кількість слів за довжиною (але лише ті, що містять голосну)
 
 Умова: groupingBy length + counting.
 Рішення:
@@ -72,7 +72,7 @@
 
 Коментар: два кроки: grouping -> max.
 
-## 3.6 — Map довжина → words (але в UpperCase)
+## 3.6 — Map довжина → words (але підняти в UpperCase)
 
 Умова: згрупувати слова за довжиною,
 але значення — uppercase списки.
@@ -132,21 +132,16 @@ summaryStatistics по довжинах.
 що починаються з UpperCase.
 Рішення:
 
-    public void practice9 () {
-        String [] array = new String[]{"Aa", "Bba", "Cec", "Aata"};
-        Arrays.stream(array).filter(w->Character
-                        .isUpperCase(w
-                                .charAt(0)))
+    public String task9 () {
+        return Arrays.stream(words).filter(w->Character.isUpperCase(w.charAt(0)))
                 .max(Comparator.comparingInt(String::length))
                 .orElse("");
-    }
 
 
 Коментар: подібний шаблон для будь-якого фільтру + max.
 
-## 3.10 — Map<довжина, середня кількість голосних> — unmodifiable
-
-Умова: зробити результат незмінним Map.
+## 3.10 — Map<довжина, середня кількість голосних> — unmodifiable ?
+Умова: зробити результат незмінним Map <Long, Double>
 Рішення:
 
 return Stream.of(words).collect(Collectors.collectingAndThen(
