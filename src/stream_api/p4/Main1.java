@@ -1,8 +1,6 @@
 package stream_api.p4;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -51,4 +49,45 @@ public class Main1 {
                         }));
 
     }
+
+    public List <String> task6 () {
+        String[] array = {"Aa", "Bba", "Cec", "Aata"};
+        return Stream.of(array)
+                .sorted(Comparator.comparing(w->w.chars().filter(c->"aeiou".indexOf(c)>=0).count()))
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+    }
+
+    public String task7 () {
+        String[] array = {"Aa", "Bba", "Cec", "Aata"};
+        return Stream.of(array)
+                .collect(Collectors
+                        .collectingAndThen(Collectors.toSet(),
+                                set->(String)set.iterator().next()));
+    }
+
+    public LinkedHashMap <String, Long> task8 () {
+        Map<String, Long> map = new HashMap<>();
+        return map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                        Map.Entry::getValue, (a,b) -> a,
+                        LinkedHashMap::new));
+    }
+
+    public List <String> task9 (List<String> sentences, int n) {
+        return sentences.stream()
+                .flatMap(s->Arrays.stream(s.split("\\s+")))
+                .map(String::toLowerCase)
+                .distinct()
+                .limit(n)
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        Collections::unmodifiableList));
+    }
+
+    public Integer task10 (String [] array) {
+        return Arrays.stream(array).collect(Collectors.collectingAndThen(Collectors.toList(), List::size));
+    }
+
+
 }
