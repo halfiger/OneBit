@@ -20,8 +20,11 @@
 
 Коментар: multi-criteria sorting.
 
-## 5.2 — Сортування чисел: парні першими, всередині спадання
+## 5.2 — Сортування чисел: 
+парні першими, всередині спадання
 
+на вході List <Integer> numbers
+на виході List <Integer> numbers
 Рішення: (як у твоєму файлі)
 
     public List <Integer> practice2 (List <Integer> numbers) {
@@ -123,9 +126,8 @@
     public Map <Long, Long> practice9 (List <Long> inputs) {
         return inputs
                 .stream()
-                .map(Long::valueOf)
                 .collect(Collectors
-                        .groupingBy(x->x,
+                        .groupingBy(Function.identity(),
                                 Collectors.counting()));
     }
 
@@ -136,12 +138,13 @@
 Умова: знайти найчастіший перший символ (коректна версія).
 Рішення:
 
-return Arrays.stream(words)
-.collect(Collectors.groupingBy(w->w.charAt(0), Collectors.counting()))
-.entrySet().stream()
-.max(Map.Entry.comparingByValue())
-.map(Map.Entry::getKey)
-.orElse(null);
+    public Character task10 (String [] array) {
+    return Arrays.stream(words)
+    .collect(Collectors.groupingBy(w->w.charAt(0), Collectors.counting()))
+    .entrySet().stream()
+    .max(Map.Entry.comparingByValue())
+    .map(Map.Entry::getKey)
+    .orElse(null);
 
 
 Коментар: зверни увагу на коректний Comparator та типи.
