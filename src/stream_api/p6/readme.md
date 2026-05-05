@@ -85,7 +85,7 @@ edge-cases, collectingAndThen validation.
 
 6.6 — Product of digits at odd indexes
 
-Умова: n=123456 → product of digits at indexes 1,3,5 → 246 = 48.
+Умова: n=123456 → product of digits at indexes 1,3,5 → 2*4*6 = 48.
 Рішення:
 
     public int practice6 (int n) {
@@ -130,10 +130,10 @@ edge-cases, collectingAndThen validation.
 Умова: є список людей з hobbies → згрупувати всі хобі за першою літерою.
 Рішення (flatMap варіант):
 
-return people.stream()
-.flatMap(p -> p.hobbies().stream())
-.collect(Collectors.groupingBy(h -> h.charAt(0), Collectors.toSet()));
-
+    public Map <Character, Set<String>> task9 (List<List<String>> list) {
+        return list.stream().flatMap(Collection::stream)
+                .collect(Collectors.groupingBy(w->w.charAt(0), Collectors.toSet()));
+    }
 
 Теорія: flatMapping також існує як вбудований колектор (Java16+), але flatMap
 + groupingBy — універсальний варіант.
