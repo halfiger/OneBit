@@ -1,8 +1,6 @@
 package stream_api.grouping_15;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -22,5 +20,17 @@ public class Main1 {
         return map.entrySet().stream().filter(e->e.getValue() > 1).count();
     }
 
+    public String task3 (String s) {
+        return Arrays.stream(s.split("//s*"))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse("");
+    }
 
+    public Map <Integer, Integer> task4 (List <Integer> list) {
+        return list.stream().collect(Collectors.groupingBy(a->a%10, Collectors.summingInt(n->n)));
+    }
+
+    public Map <Integer, Long> task5 (List <String> list) {
+        return list.stream().collect(Collectors.groupingBy(String::length, Collectors.counting()))
+    }
 }
