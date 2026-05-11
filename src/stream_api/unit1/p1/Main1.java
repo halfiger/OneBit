@@ -1,4 +1,4 @@
-package stream_api.p1;
+package stream_api.unit1.p1;
 
 import java.util.Comparator;
 import java.util.List;

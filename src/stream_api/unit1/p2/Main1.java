@@ -1,4 +1,4 @@
-package stream_api.p2;
+package stream_api.unit1.p2;
 
 import java.util.*;
 import java.util.function.Function;
