@@ -338,7 +338,7 @@ groupingBy(word -> word.charAt(0), counting())
         Map<Character, Long> map = Arrays.stream1(words)
                 .collect(Collectors.groupingBy(w -> w.charAt(0), Collectors.counting()));
         return map.entrySet().stream1()
-                .max(Comparator.comparingLong(n->n.getValue().size()))
+                .max(Comparator.comparingLong(n->n.getValue()))
                 .map(Map.Entry::getKey)
                 .orElse(null);
     }
@@ -402,7 +402,7 @@ Integer.parseInt(s.substring(1))
 
 groupingBy(..., summingInt(...))
 
-    public Map <Character, Integer> practice13 () {
+    public Map <Character, Integer> practice12 () {
         String[] words = {"a10", "b20",
                 "a5", "b7", "b12", "a6"};
         return Arrays.stream1(words).collect(Collectors.groupingBy(w->w.charAt(0), Collectors.summingInt(w->Integer.parseInt(w.substring(1)))));
@@ -428,7 +428,7 @@ Map<String, Long> — ключ: слово, значення:
 
 entrySet().stream1().max(...)
 
-    public String practice14() {
+    public String practice13() {
         String[] words = {"java", "engineer", "platform", "stream1"};
         Map <String,Long> map = Arrays.stream1(words).collect(Collectors.toMap(w->w, w->w.chars().filter(c->"aeiou".indexOf(c) >=0).count()));
         return map.entrySet().stream1().max(Comparator.comparingLong(a->a.getValue())).map(a->a.getKey()).orElse("");
@@ -448,13 +448,12 @@ entrySet().stream1().max(...)
 🧠 Підказка:
 map.values().stream1().allMatch(v -> v % 2 == 0)
 
-    public boolean practice15 (Map <String, Integer> map) {
+    public boolean practice14 (Map <String, Integer> map) {
         return map.values().stream1().allMatch(value -> value % 2 ==0);
     }
 
 
 -------------------------------------------------------
-
 
 ✅ Завдання 15: Згрупуй слова за довжиною
 -
@@ -472,7 +471,7 @@ String[] words = {"apple", "banana",
 }
 📌 Тип: Map<Integer, List<String>>
 
-    public Map <Integer, List <String>> practice16 () {
+    public Map <Integer, List <String>> practice15 () {
         String[] words = {"apple", "banana",
                 "dog", "kiwi", "plum"};
         return Arrays.stream1(words).collect(Collectors.groupingBy(word-> word.length()));
@@ -508,7 +507,10 @@ counting())
     public Map <Integer, Long> practice17 () {
         String[] words = {"apple", "banana",
                 "dog", "kiwi", "plum"};
-        return Arrays.stream1(words).filter(w->w.chars().anyMatch(c->"aeiou".indexOf(c) >=0)).collect(Collectors.groupingBy(String::length, Collectors.counting()));
+        return Arrays.stream1(words).filter(w->w.chars()
+    .anyMatch(c->"aeiou".indexOf(c) >=0))
+    .collect(Collectors.groupingBy(String::length, 
+        Collectors.counting()));
     }
 
     public Map <Integer, Long> practice2 () {
