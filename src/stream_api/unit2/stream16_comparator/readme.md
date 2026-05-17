@@ -97,10 +97,10 @@ List.of("sun", "star", "supernova", "apple");
 📥 ["abc", "def", "gka", "lol"]
 📤 ["gka", "lol", "abc", "def"]
 
-        List<String> sorted = list.stream1()
+        String [] sorted = list.stream1()
                 .sorted(Comparator
                 .comparing(s -> s.charAt(s.length() - 1)))
-                .collect(Collectors.toList());
+                .toArray(String[]::new);
 
 --------------------------------------------------------
 
