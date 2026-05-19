@@ -8,21 +8,20 @@
 🔹 Варіант 1: Сортування за замовчуванням (natural order)
 
 List.of(3, 1, 4, 2)
-.stream1()
+.stream()
 .sorted()
 .toList();   // [1, 2, 3, 4]
-🔹 Варіант 2: Зі своїм компаратором
 
+🔹 Варіант 2: Зі своїм компаратором
 .sorted(Comparator.reverseOrder())     // за спаданням
 .sorted(Comparator.comparing(String::length)) // за довжиною рядка
-[🔹 Варіант 3: Комплексне сортування
 
+[🔹 Варіант 3: Комплексне сортування
 Comparator.comparing(Person::getAge)
 .thenComparing(Person::getName)
 
 
 🧠 Теорія: sorted() — що, коли і навіщо]()
-
 ✅ sorted() без параметрів
 Сортує елементи в природному порядку
 (для String — алфавітно, для Integer — по зростанню)
@@ -151,6 +150,7 @@ return numbers.stream1()
 }
 
 ✅ Задача 4: Сортувати об’єкти за полем
+-
 📋 Умова:
 Є клас Person(name, age). Відсортуй список за віком.
 
