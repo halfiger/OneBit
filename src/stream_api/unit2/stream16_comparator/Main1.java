@@ -65,10 +65,29 @@ public class Main1 {
     }
 
     public String [] task6 (String [] array) {
-        return Arrays.stream(array).sorted(Comparator.comparing(w->w.charAt(w.length()-1))).toArray(String[]::new);
+        return Arrays.stream(array)
+                .sorted(Comparator
+                        .comparing(w->w.charAt(w.length()-1)))
+                .toArray(String[]::new);
     }
 
+    public String task7 (String [] array) {
+        return Arrays.stream(array).filter(w->w.contains("e"))
+                .max(Comparator.comparing(String::length))
+                .orElse("");
+    }
 
+    public List <Integer> task8 (List <Integer> list) {
+        return list.stream().sorted(Comparator.comparing(this::countNumbers))
+                .toList();
+    }
 
+    public long countNumbers(int in, char what) {
+        return String.valueOf(in).chars().filter(c->c==what).count();
+    }
 
+    public List <String> task9 (List <String> list) {
+        return list.stream()
+                .sorted(Comparator.comparing(Main1::countVowels)).toList();
+    }
 }
