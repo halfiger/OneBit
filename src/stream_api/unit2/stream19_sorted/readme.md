@@ -288,7 +288,7 @@ Comparator.comparing(String::length).reversed()
 📦 Початковий код:
 
 public List<String> sortByLengthDescending(List<String> words) {
-return words.stream1()
+return words.stream()
 .sorted(Comparator.comparing(String::length).reversed())
 .collect(Collectors.toList());
 }
@@ -312,7 +312,7 @@ List<Integer> numbers = List.of(3, 2, 5, 6, 4, 1);
 📦 Початковий код:
 
 public List<Integer> sortEvenOddDesc(List<Integer> numbers) {
-return numbers.stream1()
+return numbers.stream()
 .sorted(Comparator.comparingInt((Integer n) -> n % 2)
 .thenComparing(Comparator.reverseOrder()))
 .collect(Collectors.toList());
@@ -343,10 +343,10 @@ Comparator.comparing((Person p) -> p.name().length())
 .thenComparing(Person::age)
 📦 Початковий код:
 
-record Person(String name, int age) {}
+class Person(String name, int age) {}
 
 public List<Person> sortByNameLengthThenAge(List<Person> people) {
-return people.stream1()
+return people.stream()
 .sorted(
 Comparator.comparing((Person p) -> p.name().length())
 .thenComparing(Person::age)
