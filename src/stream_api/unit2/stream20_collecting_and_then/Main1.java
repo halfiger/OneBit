@@ -60,5 +60,13 @@ public class Main1 {
                         list -> String.join(", ", list)
                 ));}
 
+    public int task10 (List <String> list) {
+        return list.stream().collect(Collectors.collectingAndThen(
+                Collectors.groupingBy(String::length), Map::size
+        ));
+    }
+
+
+
 
 }
