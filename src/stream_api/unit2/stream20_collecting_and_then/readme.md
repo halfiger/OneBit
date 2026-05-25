@@ -73,7 +73,6 @@ return Stream.of("hi", "hello", "mango", "go", "halo", "yo").collect(Collectors.
         .collectingAndThen(Collectors.toList(), 
         Collections::unmodifiableList));
 
-
 ✅ Завдання 5: Кількість чисел, кратних 3
 📋 Умова:
 Порахуйте, скільки чисел у

@@ -1,7 +1,6 @@
 package stream_api.unit2.stream20_collecting_and_then;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main1 {
@@ -31,6 +30,26 @@ public class Main1 {
         return Arrays.stream(s)
                 .collect(Collectors.collectingAndThen(
                         Collectors.groupingBy(w->w.charAt(w.length()-1)), Map::size));
+    }
+
+    public List<String> task4 (String [] strings) {
+        return Arrays.stream(strings)
+                .filter(w->w.length()>4)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+    }
+
+    public int task5 (List <Integer> list) {
+        return list.stream().collect(Collectors.collectingAndThen(
+                Collectors.toList(), List::size));
+    }
+
+    public String task6 (List<String>list) {
+        return list.stream().sorted(Comparator.comparing(String::length).thenComparing(Comparator.reverseOrder()))
+                .collect(Collectors.collectingAndThen(Collectors.toList(), List::getFirst));
+    }
+
+    public Map <Character, List<String>> task7 (List <String> list) {
+        return list.stream().collect(Collectors.collectingAndThen(Collectors.groupingBy(w->w.charAt(0)), Collections::unmodifiableMap));
     }
 
 }
