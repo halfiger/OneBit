@@ -52,4 +52,13 @@ public class Main1 {
         return list.stream().collect(Collectors.collectingAndThen(Collectors.groupingBy(w->w.charAt(0)), Collections::unmodifiableMap));
     }
 
+    public String task9 (List <Integer> in) {
+        return in.stream().filter(n->n%2 == 0)
+                .map(String::valueOf)
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toList(),
+                        list -> String.join(", ", list)
+                ));}
+
+
 }

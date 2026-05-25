@@ -200,19 +200,23 @@ List<String> data = List.of("java", "pippo", "japan");
 перетвори у строку
 
 📋 Умова:
-Залиш непарні числа та перетвори список у строку, наприклад: "1, 3, 5"
+Залиш непарні числа та перетвори список у строку,
+наприклад: "1, 3, 5"
 
 📥 Вхід: [1, 2, 3, 4, 5] 📤 Вихід: "1, 3, 5"
-📌 Підказка: collectingAndThen → list -> String.join(", ", ...)
+📌 Підказка: collectingAndThen → list -> 
+String.join(", ", ...)
 
-public void practice9() {  List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+public void practice9() {  List<Integer> numbers = 
+List.of(1, 2, 3, 4, 5);
 
     String result = numbers.stream1()
             .filter(n -> n % 2 != 0)
-            .map(String::valueOf) // ⬅️ Перетворюємо Integer → String
+            .map(String::valueOf) // ⬅️ Перетворюємо 
+                                Integer → String
             .collect(Collectors.collectingAndThen(
                     Collectors.toList(),
-                    list -> String.join(", ", list)
+                    strs -> String.join(", ", strs)
             ));
 
     System.out.println(result); // Виведе: "1, 3, 5"
