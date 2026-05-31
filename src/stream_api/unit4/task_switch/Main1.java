@@ -1,4 +1,4 @@
-package switch_.p1;
+package stream_api.unit4.task_switch;
 
 public class Main1 {
     public static void main(String[] args) {
