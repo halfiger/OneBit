@@ -7,9 +7,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Main2 {
-    public static void main(String[] args) {
 
+class StringWrapper {
+    private String theVal;
+    public StringWrapper(String str){ this.theVal = str; }
+}
+public class Main2 {
+            public static void main(String[] args) {
+                StringWrapper sw = new StringWrapper("How are you?");
+                StringBuilder sb = new StringBuilder("How are you?");
+                System.out.println("Hello, "+sw);
+                System.out.println("Hello, "+sb);
     }
 
     public static int task1(int a, int b) {
