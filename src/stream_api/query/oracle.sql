@@ -1077,14 +1077,77 @@ create table friendz
 
 create table friendz
 (
-    id     number constraint cscs6 unique constraint cscs7 not null,
+    id     number
+        constraint cscs6 unique
+        constraint cscs7 not null,
     name   varchar2(22),
     salary number,
-    email varchar2(22),
+    email  varchar2(22),
     constraint cscs4
-check (salary between 500 and 1000),
-constraint cscs5
-check (email like '%@%')
+        check (salary between 500 and 1000),
+    constraint cscs5
+        check (email like '%@%')
 
 );
+
+-- block 14 repeat on next day
+
+create table address
+(
+    id      number
+        constraint cs1 unique,
+    country varchar2(22) not null,
+    city    varchar2(22),
+    constraint cs2
+        unique (id)
+);
+
+create table friendz
+(
+    id         number primary key,
+    name       varchar2(22) check (length(name) > 3),
+    email      varchar2(22) not null constraint cs7 check (email like '%@%'),
+    address_id varchar2(22) references address (id) on delete set null,
+    salary     number check (salary between 500 and 1000),
+    birthday   date constraint cs8 unique constraint cs9 not null,
+    constraint cs3 foreign key (address_id)
+        references address (id)
+            on delete set null,
+    constraint cs4 foreign key (address_id)
+        references address (id)
+            on delete cascade,
+    constraint cs5 check (length(name) > 4),
+    constraint cs6 check (salary between 500 and 1001),
+    constraint cs11 check (salary >=400 and salary <= 1100)
+);
+
+alter table friendz
+disable constraint cs1;
+
+alter table friendz
+enable constraint cs1;
+
+
+alter table friendz drop primary key;
+
+alter table friendz add constraint cs10
+foreign key (address_id)
+references address(id);
+
+alter table friendz
+    add constraint cs5 primary key (id);
+
+alter table friendz
+    modify (email varchar2(22) not null);
+
+create unique index ui1 on friendz (id);
+create unique index ui2 on friendz (email);
+
+create index indx1 on friendz (name);
+create bitmap index indx2 on friendz (name);
+drop index indx1;
+drop index indx2;
+
+alter table friendz
+    drop constraint cs1;
 
