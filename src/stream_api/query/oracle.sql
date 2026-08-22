@@ -1106,10 +1106,13 @@ create table friendz
 (
     id         number primary key,
     name       varchar2(22) check (length(name) > 3),
-    email      varchar2(22) not null constraint cs7 check (email like '%@%'),
+    email      varchar2(22) not null
+        constraint cs7 check (email like '%@%'),
     address_id varchar2(22) references address (id) on delete set null,
     salary     number check (salary between 500 and 1000),
-    birthday   date constraint cs8 unique constraint cs9 not null,
+    birthday   date
+        constraint cs8 unique
+        constraint cs9 not null,
     constraint cs3 foreign key (address_id)
         references address (id)
             on delete set null,
@@ -1118,21 +1121,23 @@ create table friendz
             on delete cascade,
     constraint cs5 check (length(name) > 4),
     constraint cs6 check (salary between 500 and 1001),
-    constraint cs11 check (salary >=400 and salary <= 1100)
+    constraint cs11 check (salary >= 400 and salary <= 1100)
 );
 
 alter table friendz
-disable constraint cs1;
+    disable constraint cs1;
 
 alter table friendz
-enable constraint cs1;
+    enable constraint cs1;
 
 
-alter table friendz drop primary key;
+alter table friendz
+    drop primary key;
 
-alter table friendz add constraint cs10
-foreign key (address_id)
-references address(id);
+alter table friendz
+    add constraint cs10
+        foreign key (address_id)
+            references address (id);
 
 alter table friendz
     add constraint cs5 primary key (id);
@@ -1151,3 +1156,70 @@ drop index indx2;
 alter table friendz
     drop constraint cs1;
 
+-- block 14 #3 22-8-2026
+
+create table address
+(
+    id      number
+        constraint cs1 unique,
+    country varchar2(33),
+    city    varchar2(22),
+    constraint cs2 unique (id)
+
+);
+
+create table friendz
+(
+    id         number PRIMARY KEY,
+    name       varchar2(22) CHECK (LENGTH(NAME) > 3),
+    email      varchar2(22) NOT NULL
+        CONSTRAINT CS10 UNIQUE
+        CONSTRAINT CS11 NOT NULL,
+    address_id number       REFERENCES ADDRESS (ID) ON DELETE SET NULL,
+    SALARY NUMBER CHECK (SALARY BETWEEN 500 AND 1000),
+    birthday   date UNIQUE NOT NULL,
+    CONSTRAINT CS3
+        FOREIGN KEY (address_id)
+            REFERENCES address (ID)
+                ON DELETE SET NULL,
+    CONSTRAINT CS4
+        CHECK (LENGTH(NAME) > 4),
+            CONSTRAINT CS7
+            FOREIGN KEY (ADDRESS_ID)
+            REFERENCES ADDRESS(ID)
+            ON DELETE CASCADE,
+    CONSTRAINT CS8
+        CHECK (SALARY BETWEEN 500 AND 1000),
+    CONSTRAINT CS9
+        CHECK (EMAIL LIKE '%@%')
+);
+
+ALTER TABLE FRIENDZ ADD CONSTRAINT CS12
+FOREIGN KEY (ADDRESS_ID)
+REFERENCES address(ID);
+
+ALTER TABLE FRIENDZ DISABLE CONSTRAINT CS4;
+ALTER TABLE FRIENDZ ENABLE CONSTRAINT CS5;
+
+ALTER TABLE FRIENDZ DROP PRIMARY KEY;
+
+ALTER TABLE FRIENDZ
+    ADD CONSTRAINT CS5 PRIMARY KEY (ID);
+
+ALTER TABLE FRIENDZ
+    MODIFY
+        EMAIL CONSTRAINT CS6 NOT NULL;
+
+CREATE UNIQUE INDEX UI1 ON FRIENDZ (ID);
+CREATE INDEX UI2 ON FRIENDZ (EMAIL);
+
+-- B-TREE INDEX
+CREATE INDEX UI3 ON FRIENDZ (BIRTHDAY);
+
+-- BIT MAP INDEX
+CREATE BITMAP INDEX UI4 ON FRIENDZ (EMAIL);
+
+DROP INDEX UI1;
+
+ALTER TABLE FRIENDZ
+    DROP CONSTRAINT CS4;
