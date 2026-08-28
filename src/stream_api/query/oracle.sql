@@ -4,6 +4,8 @@ values (1, 'boba', 'baba', to_date('10-03-2024', 'DD-MM-YYYY'));
 select *
 from studentz;
 
+select * from employees;
+
 create table productz
 (
     id   number primary key,
@@ -1223,3 +1225,147 @@ DROP INDEX UI1;
 
 ALTER TABLE FRIENDZ
     DROP CONSTRAINT CS4;
+
+-- block 12 --
+
+create table studentz (
+    id number primary key,
+    first_name varchar2 (22) default 'bao',
+    last_name varchar2 (22),
+    age number check ( age > 0 ),
+    birthdate date default sysdate not null
+);
+
+insert into studentz (id, first_name, last_name, age, birthdate) values
+(1, 'coca', null, 22, to_date('15-mar-2024','DD-MON-YYYY'));
+
+insert into studentz (id, first_name, last_name, age, birthdate) values
+(1, upper('moca'), null, 22, sysdate);
+
+insert into studentz (id, first_name, last_name, age, birthdate) values
+(1, initcap('nuca'), 'cola', 22, sysdate-100);
+
+update studentz set last_name = nvl(last_name, 'cola') where last_name is null;
+
+create table gradez (
+    id number,
+    name varchar2 (22),
+    st_id number references studentz(id),
+    constraint cs1
+                    foreign key (st_id) references studentz(id)
+);
+
+alter table studentz add (
+    grade number check (grade between 1 and 10));
+
+select id, nvl (grade, 'none') from studentz;
+
+alter table studentz add (
+    email varchar2 (100)
+    );
+
+update studentz set grade = grade + 3 where grade < (select avg (grade) from studentz);
+
+delete studentz where email is null;
+
+-- block 13 --
+
+create table friendz (id, name, surname) as (select employee_id, first_name, last_name from EMPLOYEES);
+
+alter table friendz add (
+    email varchar2 (22)
+    );
+
+alter table friendz modify (
+    email varchar2 (22) default 'no@ne'
+    );
+
+alter table friendz rename column email to mail;
+
+drop table friendz;
+
+create table friendz (
+  id number,
+  name varchar2 (22),
+  surname varchar2 (22),
+  email varchar2 (22),
+  salary number (22) default 1000,
+  birthday date default sysdate
+);
+
+insert into friendz (id, name, surname, email, salary, birthday) values
+(1, 'coca', 'cola', 'co@ca', 100, sysdate -100);
+
+insert into friendz (id, name, surname, email) values
+(1, 'coca', 'cola', 'co@ca');
+
+commit;
+
+alter table friendz drop column email;
+
+alter table friendz set unused column salary;
+
+alter table friendz set unused column birthday;
+
+alter table friendz drop unused columns;
+
+alter table friendz read only;
+
+alter table friendz read write;
+
+truncate table friendz;
+
+drop table friendz;
+
+alter table friendz add constraint cs2 unique (email);
+
+alter table friendz add (
+    phone1 number,
+    phone2 number
+    );
+
+alter table friendz modify (
+    email varchar2 (100) default 'none'
+    );
+
+alter table friendz modify (
+    salary constraint cs6 check ( salary between 500 and 1000)
+    );
+
+alter table friendz add constraint cs7 check (salary between 500 and 1000);
+
+-- block 14 re3
+
+create table address (
+  id number constraint cs1 unique,
+  country varchar2 (22),
+  city varchar2 (22),
+    constraint cs1 unique (id)
+);
+
+create table friends (
+    id number,
+    name varchar2 (22) check (length(name) > 3),
+    email varchar2 (22),
+    address_id number references address (id),
+    birthday date,
+    constraint cs2
+    foreign key (address_id)
+                     references address (id),
+    constraint cs3
+                     check (length (name) > 3)
+);
+
+alter table friends add constraint cs4 primary key (id);
+
+
+
+
+
+
+
+
+
+
+
+
