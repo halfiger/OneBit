@@ -91,6 +91,7 @@
                 .map(Character::getNumericValue)
                 .distinct()
                 .sorted()
+                .boxed()
                 .toList();
     }
 
