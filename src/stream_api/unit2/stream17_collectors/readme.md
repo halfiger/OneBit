@@ -20,7 +20,7 @@ Collectors.toList())));
 
 ---------------------------------------------------------
 
-📘 STREAM API – Частина 2: Колектори, що розширює ті,
+# 📘 STREAM API – Частина 2: Колектори, що розширює ті,
 які ти вже бачив.
 Вони торкаються схожих тем, але додають нові аспекти,
 такі як mapping,
@@ -88,7 +88,7 @@ false=3
 
 public Map<Boolean, Long> countEvenOdd() {
 List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
-return numbers.stream1()
+return numbers.stream()
 .collect(Collectors.partitioningBy(
 n -> n % 2 == 0,
 Collectors.counting()
@@ -164,7 +164,7 @@ List<Integer> numbers = List.of(4, 8,
 
 public String countAsString() {
 List<Integer> numbers = List.of(4, 8, 15, 16, 23, 42);
-return numbers.stream1()
+return numbers.stream()
 .collect(Collectors.collectingAndThen(
 Collectors.counting(),
 count -> "Count: " + count
@@ -324,10 +324,9 @@ List<String> words = List.of("hi", "book",
 📦 Початковий код:
 
 return words.stream1()
-.collect(Collectors.reducing(
-"",
-(a, b) -> a.length() >= b.length() ? a : b
-));
+.collect(Collectors.reducing("", (a, b) -> a.length() >= b.length() ? a : b));
+
+-- return list.stream().reduce("", (a, b) -> a.length() >= b.length() ? a : b);
 
 ------------------------------------------------
 
@@ -403,7 +402,7 @@ TreeMap<Integer, List <String>>
 📌 Є Map<Integer, List<String>>. Відсортуй її за
 розміром списків.
 
-🔍 Підказка: .entrySet().stream1()
+🔍 Підказка: .entrySet().stream()
 .sorted(...).collect(...)
 
 Map <Integer, List<String>> input = Map.of(
@@ -423,7 +422,7 @@ Map <Integer, List<String>> input = Map.of(
 public LinkedHashMap<Integer, List<String>>
 sortByListSize(Map<Integer, List<String>> input) {
 
-return input.entrySet().stream1()
+return input.entrySet().stream()
 .sorted(Comparator.comparingInt(e -> e.getValue().size()))
 .collect(Collectors.toMap(
 Map.Entry::getKey,
@@ -705,7 +704,7 @@ partitioningBy → коли є тільки 2 групи (true / false)
 mapping → щоб дістати з об’єктів тільки потрібне (name)
 toList → щоб результат був список імен
 
-✅ Задача 13: groupingBy + SortedSet
+✅ Задача 14: groupingBy + SortedSet
 -
 📌 Згрупуй слова за першою літерою, без повторень,
 у відсортованому вигляді.
