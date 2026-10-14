@@ -28,4 +28,19 @@ public class Main2 {
                 .collect(Collectors.collectingAndThen(Collectors.toList(), list -> String.join("", list)));
     }
 
+    public static long count (String s) {
+    return s.chars().filter(a->"aeiou".indexOf(a) >=0).count();
+    }
+
+    public String practice5 () {
+        return Stream.of("Do0000g", "Ca0000t", "Mister", "Thea")
+                .filter(s->count(s) ==2)
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        list -> {
+                            if (list.size() == 1) {
+                            throw new IllegalStateException("Expected exactly one");
+                            } return list.getFirst();
+                            }));
+    }
+
 }
