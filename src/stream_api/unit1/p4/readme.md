@@ -1,4 +1,5 @@
-## 4.1 — Відфільтрувати >50,
+## 4.1 — Відфільтрувати 
+>50,
 відсортувати спаданням,
 повернути unmodifiable List
 
@@ -76,8 +77,6 @@
                     .collectingAndThen(Collectors.toList(), 
                         list -> String.join("", list)));
     }
-
-
 
 Коментар: простий шаблон для перетворення list→string.
 
