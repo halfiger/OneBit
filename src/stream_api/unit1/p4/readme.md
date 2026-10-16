@@ -108,7 +108,7 @@ IllegalStateException, якщо не точно одне)
 
 Рішення: (див. 3.10) — те ж саме, але обгорнуте в unmodifiableMap.
 
-        public Map<Long, List<String>> practice6() {
+        public List<String> practice6() {
         String[] array = {"Aa", "Bba", "Cec", "Aata"};
         return Arrays.stream(array)
                 .map(String::toLowerCase)

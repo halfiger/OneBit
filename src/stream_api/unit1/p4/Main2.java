@@ -3,6 +3,7 @@ package stream_api.unit1.p4;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,5 +43,14 @@ public class Main2 {
                             } return list.getFirst();
                             }));
     }
+
+    public List<String> practice6 (List <String> list) {
+        return list.stream().map(String::toLowerCase)
+                .sorted(Comparator.comparing(String::length).reversed())
+                .limit(3)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+    }
+
+
 
 }
