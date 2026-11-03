@@ -174,7 +174,7 @@ int[][] data = {
                 {-1, 4}
         };
         
-        Arrays.stream1(data)
+        Arrays.stream(data)
                 .flatMap(arr->Arrays.stream1(arr)
                         .boxed())
                 .filter(value -> value > 0)
