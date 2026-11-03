@@ -1,9 +1,6 @@
 package stream_api.unit1.p4;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -50,6 +47,21 @@ public class Main2 {
                 .limit(3)
                 .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
+
+    public String practice7 (List<String> list) {
+        return list.stream().collect(Collectors.collectingAndThen(
+                Collectors.toSet(), set->set.iterator().next()));
+    }
+
+    public Map <String, Long> practice8 (Map <String, Long> map) {
+        return map.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                        Map.Entry::getValue, (a,b) -> a,
+                        LinkedHashMap::new
+                        ));
+    }
+
 
 
 

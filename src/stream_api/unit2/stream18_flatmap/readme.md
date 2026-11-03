@@ -37,13 +37,14 @@ List.of("kotlin")
 );
 🧪 map:
 
-data.stream1()
-.map(list -> list.stream1())   // Stream<Stream<String>>
+data.stream()
+.map(list -> list.stream())   // Stream<Stream<String>>
 🔥 flatMap:
 
-data.stream1()
-.flatMap(list -> list.stream1())   // Stream<String>
+data.stream()
+.flatMap(list -> list.stream())   // Stream<String>
 .collect(Collectors.toList());
+
 ✅ Результат:
 
 [java, python, c++, go, kotlin]
