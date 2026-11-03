@@ -18,5 +18,14 @@ public class Main1 {
 
     }
 
+    public List <String> practice1 (List <List <String>> list) {
+        return list.stream().flatMap(Collection::stream).toList();
+    }
+
+    public List <Integer> practice2 (List <List<Integer>> list) {
+        return list.stream().flatMap(Collection::stream).toList();
+    }
+
+
 
 }
